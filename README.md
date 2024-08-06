@@ -57,7 +57,7 @@ There are mainly 2 ways of installing DiscoveryAI - With Docker, Without Docker.
 2. Clone the DiscoveryAI repository:
 
    ```bash
-   git clone https://github.com/ItzCrazyKns/DiscoveryAI.git
+   git clone https://github.com/pankaj-0301/DiscoveryAI
    ```
 
 3. After cloning, navigate to the directory containing the project files.
