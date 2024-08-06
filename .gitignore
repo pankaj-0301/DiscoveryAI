@@ -20,7 +20,7 @@ yarn-error.log
 .env.production.local
 
 # Config files
-#config.toml
+config.toml
 
 # Log files
 logs/
