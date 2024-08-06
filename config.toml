@@ -1,5 +1,5 @@
 [API_KEYS]
-OPENAI = "sk-proj-vRdTBGefsLb3meK196SzT3BlbkFJjoaxdPtm6vzKkononlyy"
+OPENAI = "sk-proj-vRdTBGefsLb3meK19"
 GROQ = ""
 
 [API_ENDPOINTS]
