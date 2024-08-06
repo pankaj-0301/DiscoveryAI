@@ -125,26 +125,9 @@ If you wish to use DiscoveryAI as an alternative to traditional search engines l
 - [ ] Adding Discover and History Saving features
 - [x] Introducing various Focus Modes
 
-## Support Us
+
 
 If you find DiscoveryAI useful, consider giving us a star on GitHub. This helps more people discover DiscoveryAI and supports the development of new features. Your support is greatly appreciated.
 
-### Donations
-
-We also accept donations to help sustain our project. If you would like to contribute, you can use the following button to make a donation in cryptocurrency. Thank you for your support!
-
-<a href="https://nowpayments.io/donation?api_key=RFFKJH1-GRR4DQG-HFV1DZP-00G6MMK&source=lk_donation&medium=referral" target="_blank">
-  <img src="https://nowpayments.io/images/embeds/donation-button-white.svg" alt="Crypto donation button by NOWPayments">
-</a>
-
-## Contribution
-
-DiscoveryAI is built on the idea that AI and large language models should be easy for everyone to use. If you find bugs or have ideas, please share them in via GitHub Issues. For more information on contributing to DiscoveryAI you can read the [CONTRIBUTING.md](CONTRIBUTING.md) file to learn more about DiscoveryAI and how you can contribute to it.
-
-## Help and Support
-
-If you have any questions or feedback, please feel free to reach out to us. You can create an issue on GitHub or join our Discord server. There, you can connect with other users, share your experiences and reviews, and receive more personalized help. [Click here](https://discord.gg/EFwsmQDgAu) to join the Discord server. To discuss matters outside of regular support, feel free to contact me on Discord at `itzcrazykns`.
 
 Thank you for exploring DiscoveryAI, the AI-powered search engine designed to enhance your search experience. We are constantly working to improve DiscoveryAI and expand its capabilities. We value your feedback and contributions which help us make DiscoveryAI even better. Don't forget to check back for updates and new features!
-# demolegal
-# demolegal
