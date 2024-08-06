@@ -219,73 +219,82 @@ const SettingsDialog = ({
                       </p>
                       <ThemeSwitcher />
                     </div>
-
-                    {config.chatModelProviders && (
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-black/70 dark:text-white/70 text-sm">
-                          Chat model Provider
-                        </p>
-                        <Select
-                          value={selectedChatModelProvider ?? undefined}
-                          onChange={(e) => {
-                            setSelectedChatModelProvider(e.target.value);
-                            setSelectedChatModel(
-                              config.chatModelProviders[e.target.value][0],
-                            );
-                          }}
-                          options={Object.keys(config.chatModelProviders).map(
-                            (provider) => ({
-                              value: provider,
-                              label:
-                                provider.charAt(0).toUpperCase() +
-                                provider.slice(1),
-                            }),
-                          )}
-                        />
-                      </div>
-                    )}
-                    {selectedChatModelProvider &&
-                      selectedChatModelProvider != 'custom_openai' && (
+                    <div style={{ display: 'none' }}> {/* Hides the select component */}
+                      {config.chatModelProviders && (
                         <div className="flex flex-col space-y-1">
                           <p className="text-black/70 dark:text-white/70 text-sm">
-                            Chat Model
+                            Chat model Provider
                           </p>
-                          <Select
-                            value={selectedChatModel ?? undefined}
-                            onChange={(e) =>
-                              setSelectedChatModel(e.target.value)
-                            }
-                            options={(() => {
-                              const chatModelProvider =
-                                config.chatModelProviders[
-                                selectedChatModelProvider
-                                ];
+                          <div style={{ opacity: 0 }}> {/* Hides the select component */}
+                            <Select
+                              value={selectedChatModelProvider ?? undefined}
+                              onChange={(e) => {
+                                setSelectedChatModelProvider(e.target.value);
+                                setSelectedChatModel(
+                                  config.chatModelProviders[e.target.value][0],
+                                );
+                              }}
+                              options={Object.keys(config.chatModelProviders).map(
+                                (provider) => ({
+                                  value: provider,
+                                  label:
+                                    provider.charAt(0).toUpperCase() +
+                                    provider.slice(1),
+                                }),
+                              )}
 
-                              return chatModelProvider
-                                ? chatModelProvider.length > 0
-                                  ? chatModelProvider.map((model) => ({
-                                    value: model,
-                                    label: model,
-                                  }))
-                                  : [
-                                    {
-                                      value: '',
-                                      label: 'No models available',
-                                      disabled: true,
-                                    },
-                                  ]
-                                : [
-                                  {
-                                    value: '',
-                                    label:
-                                      'Invalid provider, please check backend logs',
-                                    disabled: true,
-                                  },
-                                ];
-                            })()}
-                          />
+                            />
+                          </div>
                         </div>
                       )}
+                    </div>
+                    {selectedChatModelProvider && selectedChatModelProvider !== 'custom_openai' && (
+  <div className="flex flex-col space-y-1">
+    <p className="text-black/70 dark:text-white/70 text-sm">
+      Chat Model
+    </p>
+
+    <div className="relative">
+      {/* Placeholder container to maintain height */}
+      <div className=" top-0 left-0 w-full h-full flex items-center px-2">
+      <p className=" border border-gray-300 dark:border-gray-600 rounded text-gray-500 dark:text-gray-400  rounded-md pr-24 pl-4 py-2 mr-2">
+          ********************************************
+        </p>
+      </div>
+      {/* Hiding the select component visually but keeping it accessible */}
+      <Select
+        value={selectedChatModel ?? undefined}
+        onChange={(e) => setSelectedChatModel(e.target.value)}
+        options={(() => {
+          const chatModelProvider = config.chatModelProviders[selectedChatModelProvider];
+
+          return chatModelProvider
+            ? chatModelProvider.length > 0
+              ? chatModelProvider.map((model) => ({
+                value: model,
+                label: model,
+              }))
+              : [
+                {
+                  value: '',
+                  label: 'No models available',
+                  disabled: true,
+                },
+              ]
+            : [
+              {
+                value: '',
+                label: 'Invalid provider, please check backend logs',
+                disabled: true,
+              },
+            ];
+        })()}
+        className="opacity-0 absolute top-0 left-0 w-full h-full pointer-events-none"
+      />
+    </div>
+  </div>
+)}
+
 
                     {selectedChatModelProvider &&
                       selectedChatModelProvider === 'custom_openai' && (
@@ -331,99 +340,106 @@ const SettingsDialog = ({
                           </div>
                         </>
                       )}
-                    {/* Embedding models */}
-                    {config.embeddingModelProviders && (
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-black/70 dark:text-white/70 text-sm">
-                          Embedding model Provider
-                        </p>
-                        <Select
-                          value={selectedEmbeddingModelProvider ?? undefined}
-                          onChange={(e) => {
-                            setSelectedEmbeddingModelProvider(e.target.value);
-                            setSelectedEmbeddingModel(
-                              config.embeddingModelProviders[e.target.value][0],
-                            );
-                          }}
-                          options={Object.keys(
-                            config.embeddingModelProviders,
-                          ).map((provider) => ({
-                            label:
-                              provider.charAt(0).toUpperCase() +
-                              provider.slice(1),
-                            value: provider,
-                          }))}
-                        />
-                      </div>
-                    )}
-                    {selectedEmbeddingModelProvider && (
-                      <div className="flex flex-col space-y-1">
-                        <p className="text-black/70 dark:text-white/70 text-sm">
-                          Embedding Model
-                        </p>
-                        <Select
-                          value={selectedEmbeddingModel ?? undefined}
-                          onChange={(e) =>
-                            setSelectedEmbeddingModel(e.target.value)
-                          }
-                          options={(() => {
-                            const embeddingModelProvider =
-                              config.embeddingModelProviders[
-                              selectedEmbeddingModelProvider
-                              ];
 
-                            return embeddingModelProvider
-                              ? embeddingModelProvider.length > 0
-                                ? embeddingModelProvider.map((model) => ({
-                                  label: model,
-                                  value: model,
-                                }))
+                    <div style={{ display: 'none' }}> {/* Hides the select component */}
+                      {/* Embedding models */}
+                      {config.embeddingModelProviders && (
+                        <div className="flex flex-col space-y-1">
+                          <p className="text-black/70 dark:text-white/70 text-sm">
+                            Embedding model Provider
+                          </p>
+                          <Select
+                            value={selectedEmbeddingModelProvider ?? undefined}
+                            onChange={(e) => {
+                              setSelectedEmbeddingModelProvider(e.target.value);
+                              setSelectedEmbeddingModel(
+                                config.embeddingModelProviders[e.target.value][0],
+                              );
+                            }}
+                            options={Object.keys(
+                              config.embeddingModelProviders,
+                            ).map((provider) => ({
+                              label:
+                                provider.charAt(0).toUpperCase() +
+                                provider.slice(1),
+                              value: provider,
+                            }))}
+                          />
+                        </div>
+                      )}
+                      {selectedEmbeddingModelProvider && (
+                        <div className="flex flex-col space-y-1">
+                          <p className="text-black/70 dark:text-white/70 text-sm">
+                            Embedding Model
+                          </p>
+                          <Select
+                            value={selectedEmbeddingModel ?? undefined}
+                            onChange={(e) =>
+                              setSelectedEmbeddingModel(e.target.value)
+                            }
+                            options={(() => {
+                              const embeddingModelProvider =
+                                config.embeddingModelProviders[
+                                selectedEmbeddingModelProvider
+                                ];
+
+                              return embeddingModelProvider
+                                ? embeddingModelProvider.length > 0
+                                  ? embeddingModelProvider.map((model) => ({
+                                    label: model,
+                                    value: model,
+                                  }))
+                                  : [
+                                    {
+                                      label: 'No embedding models available',
+                                      value: '',
+                                      disabled: true,
+                                    },
+                                  ]
                                 : [
                                   {
-                                    label: 'No embedding models available',
+                                    label:
+                                      'Invalid provider, please check backend logs',
                                     value: '',
                                     disabled: true,
                                   },
-                                ]
-                              : [
-                                {
-                                  label:
-                                    'Invalid provider, please check backend logs',
-                                  value: '',
-                                  disabled: true,
-                                },
-                              ];
-                          })()}
-                        />
-                      </div>
-                    )}
+                                ];
+                            })()}
+                          />
+                        </div>
+                      )}
+                    </div>
 
                     {/* Open API Key */}
                     <div className="flex flex-col space-y-1">
-                      <p className="text-black/70 dark:text-white/70 text-sm">
-                        OpenAI API Key
-                      </p>
-                      <div className="flex items-center border border-gray-300 dark:border-gray-600 rounded">
-                        <input
-                          type={showKey ? 'text' : 'password'} // Toggle between text and password
-                          placeholder="OpenAI API Key"
-                          value={config.openaiApiKey}
-                          readOnly
-                          className=" p-2 rounded-l flex-grow"
-                        />
-                        <button
-                          type="button"
-                          onClick={() => setShowKey(!showKey)} // Toggle visibility
-                          className="p-2 border-l border-gray-300 dark:border-gray-600"
-                        >
-                          {showKey ? (
-                            <FaEyeSlash className="text-gray-600 dark:text-gray-400" />
-                          ) : (
-                            <FaEye className="text-gray-600 dark:text-gray-400" />
-                          )}
-                        </button>
-                      </div>
-                    </div>
+  <p className="text-black/70 dark:text-white/70 text-sm">
+    OpenAI API Key
+  </p>
+
+  <div className="relative">
+    {/* Styled password input field */}
+    <input
+      type={showKey ? 'text' : 'password'} // Toggle between text and password
+      placeholder="OpenAI API Key"
+      value={config.openaiApiKey}
+      readOnly
+      className="border border-gray-300 dark:border-gray-600 rounded text-gray-500 dark:text-gray-400 p-2 w-full pr-24"
+    />
+    {/* Optional button for toggling visibility */}
+    {/* <button
+      type="button"
+      onClick={() => setShowKey(!showKey)} // Toggle visibility
+      className="absolute top-0 right-0 p-2 border-l border-gray-300 dark:border-gray-600"
+    >
+      {showKey ? (
+        <FaEyeSlash className="text-gray-600 dark:text-gray-400" />
+      ) : (
+        <FaEye className="text-gray-600 dark:text-gray-400" />
+      )}
+    </button> */}
+  </div>
+</div>
+
 
 
 
